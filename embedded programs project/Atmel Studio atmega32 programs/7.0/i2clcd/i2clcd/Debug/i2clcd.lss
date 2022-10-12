@@ -1,0 +1,227 @@
+
+i2clcd.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000130  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000184  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000184  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001b4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000048  00000000  00000000  000001f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000846  00000000  00000000  00000238  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005f8  00000000  00000000  00000a7e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000388  00000000  00000000  00001076  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000074  00000000  00000000  00001400  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000349  00000000  00000000  00001474  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001da  00000000  00000000  000017bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000038  00000000  00000000  00001997  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
+  64:	0c 94 96 00 	jmp	0x12c	; 0x12c <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <twi_init>:
+		twi_repeat();
+    }
+}
+
+void twi_init(){
+	TWBR = 72;
+  6c:	88 e4       	ldi	r24, 0x48	; 72
+  6e:	80 b9       	out	0x00, r24	; 0
+	TWSR = 0;
+  70:	11 b8       	out	0x01, r1	; 1
+	
+	TWCR = 0xA4;
+  72:	84 ea       	ldi	r24, 0xA4	; 164
+  74:	86 bf       	out	0x36, r24	; 54
+	while( TWSR != 0x08);
+  76:	81 b1       	in	r24, 0x01	; 1
+  78:	88 30       	cpi	r24, 0x08	; 8
+  7a:	e9 f7       	brne	.-6      	; 0x76 <twi_init+0xa>
+}
+  7c:	08 95       	ret
+
+0000007e <twi_data>:
+
+void twi_data( int data ){
+	TWDR = data;
+  7e:	83 b9       	out	0x03, r24	; 3
+	TWCR = 0x84;
+  80:	84 e8       	ldi	r24, 0x84	; 132
+  82:	86 bf       	out	0x36, r24	; 54
+	while( TWSR != 0x28 );
+  84:	81 b1       	in	r24, 0x01	; 1
+  86:	88 32       	cpi	r24, 0x28	; 40
+  88:	e9 f7       	brne	.-6      	; 0x84 <twi_data+0x6>
+}
+  8a:	08 95       	ret
+
+0000008c <twi_slaveAddr>:
+
+void twi_slaveAddr( int sla ){
+	TWDR = sla;
+  8c:	83 b9       	out	0x03, r24	; 3
+	TWCR = 0x84;
+  8e:	84 e8       	ldi	r24, 0x84	; 132
+  90:	86 bf       	out	0x36, r24	; 54
+	while( TWSR != 0X18 );
+  92:	81 b1       	in	r24, 0x01	; 1
+  94:	88 31       	cpi	r24, 0x18	; 24
+  96:	e9 f7       	brne	.-6      	; 0x92 <twi_slaveAddr+0x6>
+}
+  98:	08 95       	ret
+
+0000009a <twi_repeat>:
+
+void twi_repeat(){
+	TWCR = 0xA4;
+  9a:	84 ea       	ldi	r24, 0xA4	; 164
+  9c:	86 bf       	out	0x36, r24	; 54
+	while( TWSR != 0x10);
+  9e:	81 b1       	in	r24, 0x01	; 1
+  a0:	80 31       	cpi	r24, 0x10	; 16
+  a2:	e9 f7       	brne	.-6      	; 0x9e <twi_repeat+0x4>
+}
+  a4:	08 95       	ret
+
+000000a6 <main>:
+void twi_data(int);
+void twi_slaveAddr(int);
+void twi_repeat();
+int main(void)
+{
+	twi_init();
+  a6:	0e 94 36 00 	call	0x6c	; 0x6c <twi_init>
+	twi_slaveAddr( 0x70 );
+  aa:	80 e7       	ldi	r24, 0x70	; 112
+  ac:	90 e0       	ldi	r25, 0x00	; 0
+  ae:	0e 94 46 00 	call	0x8c	; 0x8c <twi_slaveAddr>
+	while (1) 
+    {
+		twi_data( 0xAA );
+  b2:	8a ea       	ldi	r24, 0xAA	; 170
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	0e 94 3f 00 	call	0x7e	; 0x7e <twi_data>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ba:	2f ef       	ldi	r18, 0xFF	; 255
+  bc:	89 e6       	ldi	r24, 0x69	; 105
+  be:	98 e1       	ldi	r25, 0x18	; 24
+  c0:	21 50       	subi	r18, 0x01	; 1
+  c2:	80 40       	sbci	r24, 0x00	; 0
+  c4:	90 40       	sbci	r25, 0x00	; 0
+  c6:	e1 f7       	brne	.-8      	; 0xc0 <main+0x1a>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <main+0x24>
+  ca:	00 00       	nop
+		_delay_ms(500);
+		twi_data( 0x55 );
+  cc:	85 e5       	ldi	r24, 0x55	; 85
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	0e 94 3f 00 	call	0x7e	; 0x7e <twi_data>
+  d4:	2f ef       	ldi	r18, 0xFF	; 255
+  d6:	89 e6       	ldi	r24, 0x69	; 105
+  d8:	98 e1       	ldi	r25, 0x18	; 24
+  da:	21 50       	subi	r18, 0x01	; 1
+  dc:	80 40       	sbci	r24, 0x00	; 0
+  de:	90 40       	sbci	r25, 0x00	; 0
+  e0:	e1 f7       	brne	.-8      	; 0xda <main+0x34>
+  e2:	00 c0       	rjmp	.+0      	; 0xe4 <main+0x3e>
+  e4:	00 00       	nop
+		_delay_ms(500);
+		
+		twi_repeat();
+  e6:	0e 94 4d 00 	call	0x9a	; 0x9a <twi_repeat>
+		twi_slaveAddr( 0x7E );
+  ea:	8e e7       	ldi	r24, 0x7E	; 126
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	0e 94 46 00 	call	0x8c	; 0x8c <twi_slaveAddr>
+		
+		twi_data( 0xAF );
+  f2:	8f ea       	ldi	r24, 0xAF	; 175
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	0e 94 3f 00 	call	0x7e	; 0x7e <twi_data>
+  fa:	2f ef       	ldi	r18, 0xFF	; 255
+  fc:	89 e6       	ldi	r24, 0x69	; 105
+  fe:	98 e1       	ldi	r25, 0x18	; 24
+ 100:	21 50       	subi	r18, 0x01	; 1
+ 102:	80 40       	sbci	r24, 0x00	; 0
+ 104:	90 40       	sbci	r25, 0x00	; 0
+ 106:	e1 f7       	brne	.-8      	; 0x100 <main+0x5a>
+ 108:	00 c0       	rjmp	.+0      	; 0x10a <main+0x64>
+ 10a:	00 00       	nop
+		_delay_ms(500);
+		twi_data( 0xF5 );
+ 10c:	85 ef       	ldi	r24, 0xF5	; 245
+ 10e:	90 e0       	ldi	r25, 0x00	; 0
+ 110:	0e 94 3f 00 	call	0x7e	; 0x7e <twi_data>
+ 114:	2f ef       	ldi	r18, 0xFF	; 255
+ 116:	89 e6       	ldi	r24, 0x69	; 105
+ 118:	98 e1       	ldi	r25, 0x18	; 24
+ 11a:	21 50       	subi	r18, 0x01	; 1
+ 11c:	80 40       	sbci	r24, 0x00	; 0
+ 11e:	90 40       	sbci	r25, 0x00	; 0
+ 120:	e1 f7       	brne	.-8      	; 0x11a <main+0x74>
+ 122:	00 c0       	rjmp	.+0      	; 0x124 <main+0x7e>
+ 124:	00 00       	nop
+		_delay_ms(500);
+		
+		twi_repeat();
+ 126:	0e 94 4d 00 	call	0x9a	; 0x9a <twi_repeat>
+ 12a:	c3 cf       	rjmp	.-122    	; 0xb2 <main+0xc>
+
+0000012c <_exit>:
+ 12c:	f8 94       	cli
+
+0000012e <__stop_program>:
+ 12e:	ff cf       	rjmp	.-2      	; 0x12e <__stop_program>

@@ -1,0 +1,139 @@
+
+
+HI-TECH Software Macro Assembler (PIC18) V9.63PL3 build 4692 
+                                                       Mon Oct 26 23:05:55 2020
+
+
+     1                           
+     2                           	; HI-TECH C PRO for the PIC18 MCU Family V9.63P
+                                 L3
+     3                           	; Copyright (C) 1984-2009 HI-TECH Software
+     4                           
+     5                           	; Auto-generated runtime startup code for final
+                                  link stage.
+     6                           
+     7                           	;
+     8                           	; Compiler options:
+     9                           	;
+    10                           	; -opic77.cof -mpic77.map --summary=default --o
+                                 utput=default pic77.p1 \
+    11                           	; --chip=18F4580 -P --runtime=default --opt=def
+                                 ault -D__DEBUG=1 -g \
+    12                           	; --asmlist --errformat=Error   [%n] %f; %l.%c 
+                                 %s \
+    13                           	; --msgformat=Advisory[%n] %s --warnformat=Warn
+                                 ing [%n] %f; %l.%c %s
+    14                           	;
+    15                           
+    16                           
+    17                           	GLOBAL	_main,start,_exit
+    18                           	FNROOT	_main
+    19                           
+    20  000000                     	pic18cxx	equ	1
+    21                           
+    22                           	psect	config,class=CONFIG,delta=1
+    23                           	psect	idloc,class=IDLOC,delta=1
+    24                           	psect	eeprom_data,class=EEDATA,delta=1
+    25                           	psect	const,class=CODE,delta=1,reloc=2
+    26                           	psect	smallconst,class=SMALLCONST,delta=1,reloc
+                                 =2
+    27                           	psect	mediumconst,class=MEDIUMCONST,delta=1,rel
+                                 oc=2
+    28                           	psect	rbss,class=COMRAM,space=1
+    29                           	psect	bss,class=RAM,space=1
+    30                           	psect	rdata,class=COMRAM,space=1
+    31                           	psect	irdata,class=CODE,space=0,reloc=2
+    32                           	psect	bss,class=RAM,space=1
+    33                           	psect	data,class=RAM,space=1
+    34                           	psect	idata,class=CODE,space=0,reloc=2
+    35                           	psect	nvram,class=NVRAM,space=1
+    36                           	psect	nvrram,class=COMRAM,space=1
+    37                           	psect	nvbit,class=COMRAM,bit,space=1
+    38                           	psect	temp,ovrld,class=COMRAM,space=1
+    39                           	psect	struct,ovrld,class=COMRAM,space=1
+    40                           	psect	rbit,class=COMRAM,bit,space=1
+    41                           	psect	bigbss,class=BIGRAM,space=1
+    42                           	psect	bigdata,class=BIGRAM,space=1
+    43                           	psect	ibigdata,class=CODE,space=0,reloc=2
+    44                           	psect	farbss,class=FARRAM,space=0,reloc=2,delta
+                                 =1
+    45                           	psect	fardata,class=FARRAM,space=0,reloc=2,delt
+                                 a=1
+    46                           	psect	ifardata,class=CODE,space=0,reloc=2,delta
+                                 =1
+    47                           
+    48                           	psect	reset_vec,class=CODE,delta=1,reloc=2
+    49                           	psect	powerup,class=CODE,delta=1,reloc=2
+    50                           	psect	intcode,class=CODE,delta=1,reloc=2
+    51                           	psect	intcodelo,class=CODE,delta=1,reloc=2
+    52                           	psect	intret,class=CODE,delta=1,reloc=2
+    53                           	psect	intentry,class=CODE,delta=1,reloc=2
+    54                           
+    55                           	psect	intsave_regs,class=BIGRAM,space=1
+    56                           	psect	init,class=CODE,delta=1,reloc=2
+    57                           	psect	text,class=CODE,delta=1,reloc=2
+    58                           GLOBAL	intlevel0,intlevel1,intlevel2
+    59  000004                     intlevel0:
+    60  000004                     intlevel1:
+    61  000004                     intlevel2:
+    62                           GLOBAL	intlevel3
+    63  000004                     intlevel3:
+    64                           	psect	end_init,class=CODE,delta=1,reloc=2
+    65                           	psect	clrtext,class=CODE,delta=1,reloc=2
+    66                           
+    67                           	psect	rparam,class=COMRAM,space=1
+    68                           	psect	param0,class=BANK0,space=1
+    69                           	psect	param1,class=BANK1,space=1
+    70                           	psect	param2,class=BANK2,space=1
+    71                           	psect	param3,class=BANK3,space=1
+    72                           	psect	param4,class=BANK4,space=1
+    73                           	psect	param5,class=BANK5,space=1
+    74  000000                     wreg	EQU	0FE8h
+    75  000000                     fsr0l	EQU	0FE9h
+    76  000000                     fsr0h	EQU	0FEAh
+    77  000000                     fsr1l	EQU	0FE1h
+    78  000000                     fsr1h	EQU	0FE2h
+    79  000000                     fsr2l	EQU	0FD9h
+    80  000000                     fsr2h	EQU	0FDAh
+    81  000000                     postinc0	EQU	0FEEh
+    82  000000                     postdec0	EQU	0FEDh
+    83  000000                     postinc1	EQU	0FE6h
+    84  000000                     postdec1	EQU	0FE5h
+    85  000000                     postinc2	EQU	0FDEh
+    86  000000                     postdec2	EQU	0FDDh
+    87  000000                     tblptrl	EQU	0FF6h
+    88  000000                     tblptrh	EQU	0FF7h
+    89  000000                     tblptru	EQU	0FF8h
+    90  000000                     tablat		EQU	0FF5h
+    91                           
+    92                           	GLOBAL __accesstop
+    93  000000                     __accesstop EQU 96
+    94                           	PSECT	ramtop,class=RAM
+    95                           	GLOBAL	__S1			; top of RAM usage
+    96                           	GLOBAL	__ramtop
+    97                           	GLOBAL	__LRAM,__HRAM
+    98  000600                     __ramtop:
+    99                           
+   100                           	PSECT	reset_vec
+   101  000000                     reset_pos:
+   102                           
+   103                           	PSECT	init
+   104  000000                     start:
+   105  000000                     _exit:
+   106                           ; fardata psect  - 0 bytes to load
+   107                           
+   108                           ; farbss psect  - 0 bytes to clear
+   109                           
+   110                           ; bigdata psect - 0 bytes to load
+   111                           
+   112  000000  EFA2  F03F         	goto	_main		;go do the main stuff
+
+
+HI-TECH Software PICC-18 Macro Assembler V9.63PL3 build 4692 
+Symbol Table                                           Mon Oct 26 23:05:55 2020
+
+        __S1 0500         _main 7F44         _exit 0000  
+       start 0000        __HRAM 0000        __LRAM 0001  
+ __accesstop 000060      __ramtop 0600     intlevel0 0004  
+   intlevel1 0004     intlevel2 0004     intlevel3 0004  
+   reset_pos 0000  

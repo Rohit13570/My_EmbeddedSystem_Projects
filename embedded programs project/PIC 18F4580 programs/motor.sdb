@@ -1,0 +1,25 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4580 ]
+"4 C:\Users\rohit\Documents\pic program\motor.c
+[v _main `(v  1 e 0 0 ]
+"14
+[v _delay `(v  1 e 0 0 ]
+"140 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
+[v _TRISC `VNuc  1 e 1 @3988 ]
+"147
+[v _LATC `VNuc  1 e 1 @3979 ]
+"4 C:\Users\rohit\Documents\pic program\motor.c
+[v _main `(v  1 e 0 0 ]
+{
+"12
+} 0
+"14
+[v _delay `(v  1 e 0 0 ]
+{
+"15
+[v _i `i  1 a 2 0 ]
+[v _j `i  1 a 2 2 ]
+"18
+} 4

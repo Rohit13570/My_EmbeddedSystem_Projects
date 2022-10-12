@@ -1,0 +1,29 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4580 ]
+"4 C:\Users\rohit\Documents\pic program\pic6.c
+[v _main `(v  1 e 0 0 ]
+"19
+[v _delay `(v  1 e 0 0 ]
+"138 C:\Program Files (x86)\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4580.h
+[v _TRISD `VNuc  1 e 1 @3989 ]
+"140
+[v _TRISC `VNuc  1 e 1 @3988 ]
+"145
+[v _LATD `VNuc  1 e 1 @3980 ]
+"678
+[v _RC0 `VNb  1 e 0 @31760 ]
+"4 C:\Users\rohit\Documents\pic program\pic6.c
+[v _main `(v  1 e 0 0 ]
+{
+"17
+} 0
+"19
+[v _delay `(v  1 e 0 0 ]
+{
+"20
+[v _i `i  1 a 2 0 ]
+[v _j `i  1 a 2 2 ]
+"23
+} 4

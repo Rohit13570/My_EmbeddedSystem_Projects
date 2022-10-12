@@ -1,0 +1,408 @@
+
+
+HI-TECH Software LITE Macro Assembler (PIC18) V9.63PL3 build 4692 
+                                                       Wed Oct 14 16:56:13 2020
+
+HI-TECH Software Omniscient Code Generator build 4692
+     1  000000                     opt subtitle "HI-TECH Software Omniscient Code G
+                                 enerator build 4692"
+     2                           
+     3                           	processor	18F4580
+     4  000000                     porta	equ	0F80h
+     5  000000                     portb	equ	0F81h
+     6  000000                     portc	equ	0F82h
+     7  000000                     portd	equ	0F83h
+     8  000000                     porte	equ	0F84h
+     9  000000                     lata	equ	0F89h
+    10  000000                     latb	equ	0F8Ah
+    11  000000                     latc	equ	0F8Bh
+    12  000000                     latd	equ	0F8Ch
+    13  000000                     late	equ	0F8Dh
+    14  000000                     trisa	equ	0F92h
+    15  000000                     trisb	equ	0F93h
+    16  000000                     trisc	equ	0F94h
+    17  000000                     trisd	equ	0F95h
+    18  000000                     trise	equ	0F96h
+    19  000000                     pie1	equ	0F9Dh
+    20  000000                     pir1	equ	0F9Eh
+    21  000000                     ipr1	equ	0F9Fh
+    22  000000                     pie2	equ	0FA0h
+    23  000000                     pir2	equ	0FA1h
+    24  000000                     ipr2	equ	0FA2h
+    25  000000                     t3con	equ	0FB1h
+    26  000000                     tmr3l	equ	0FB2h
+    27  000000                     tmr3h	equ	0FB3h
+    28  000000                     ccp1con	equ	0FBDh
+    29  000000                     ccpr1l	equ	0FBEh
+    30  000000                     ccpr1h	equ	0FBFh
+    31  000000                     adcon1	equ	0FC1h
+    32  000000                     adcon0	equ	0FC2h
+    33  000000                     adresl	equ	0FC3h
+    34  000000                     adresh	equ	0FC4h
+    35  000000                     sspcon2	equ	0FC5h
+    36  000000                     sspcon1	equ	0FC6h
+    37  000000                     sspstat	equ	0FC7h
+    38  000000                     sspadd	equ	0FC8h
+    39  000000                     sspbuf	equ	0FC9h
+    40  000000                     t2con	equ	0FCAh
+    41  000000                     pr2	equ	0FCBh
+    42  000000                     tmr2	equ	0FCCh
+    43  000000                     t1con	equ	0FCDh
+    44  000000                     tmr1l	equ	0FCEh
+    45  000000                     tmr1h	equ	0FCFh
+    46  000000                     rcon	equ	0FD0h
+    47  000000                     wdtcon	equ	0FD1h
+    48  000000                     lvdcon	equ	0FD2h
+    49  000000                     osccon	equ	0FD3h
+    50  000000                     t0con	equ	0FD5h
+    51  000000                     tmr0l	equ	0FD6h
+    52  000000                     tmr0h	equ	0FD7h
+    53  000000                     status	equ	0FD8h
+    54  000000                     fsr2	equ	0FD9h
+    55  000000                     fsr2l	equ	0FD9h
+    56  000000                     fsr2h	equ	0FDAh
+    57  000000                     plusw2	equ	0FDBh
+    58  000000                     preinc2	equ	0FDCh
+    59  000000                     postdec2	equ	0FDDh
+    60  000000                     postinc2	equ	0FDEh
+    61  000000                     indf2	equ	0FDFh
+    62  000000                     bsr	equ	0FE0h
+    63  000000                     fsr1	equ	0FE1h
+    64  000000                     fsr1l	equ	0FE1h
+    65  000000                     fsr1h	equ	0FE2h
+    66  000000                     plusw1	equ	0FE3h
+    67  000000                     preinc1	equ	0FE4h
+    68  000000                     postdec1	equ	0FE5h
+    69  000000                     postinc1	equ	0FE6h
+    70  000000                     indf1	equ	0FE7h
+    71  000000                     wreg	equ	0FE8h
+    72  000000                     fsr0	equ	0FE9h
+    73  000000                     fsr0l	equ	0FE9h
+    74  000000                     fsr0h	equ	0FEAh
+    75  000000                     plusw0	equ	0FEBh
+    76  000000                     preinc0	equ	0FECh
+    77  000000                     postdec0	equ	0FEDh
+    78  000000                     postinc0	equ	0FEEh
+    79  000000                     indf0	equ	0FEFh
+    80  000000                     intcon3	equ	0FF0h
+    81  000000                     intcon2	equ	0FF1h
+    82  000000                     intcon	equ	0FF2h
+    83  000000                     prod	equ	0FF3h
+    84  000000                     prodl	equ	0FF3h
+    85  000000                     prodh	equ	0FF4h
+    86  000000                     tablat	equ	0FF5h
+    87  000000                     tblptr	equ	0FF6h
+    88  000000                     tblptrl	equ	0FF6h
+    89  000000                     tblptrh	equ	0FF7h
+    90  000000                     tblptru	equ	0FF8h
+    91  000000                     pcl	equ	0FF9h
+    92  000000                     pclat	equ	0FFAh
+    93  000000                     pclath	equ	0FFAh
+    94  000000                     pclatu	equ	0FFBh
+    95  000000                     stkptr	equ	0FFCh
+    96  000000                     tosl	equ	0FFDh
+    97  000000                     tosh	equ	0FFEh
+    98  000000                     tosu	equ	0FFFh
+    99                           	global	__ramtop
+   100                           	global	__accesstop
+   101                           	GLOBAL	__activetblptr
+   102  000000                     __activetblptr	EQU	0
+   103                           	GLOBAL	__smallconst,__Lsmallconst
+   104  000000                     __smallconst	EQU	__Lsmallconst
+   105                           	GLOBAL	__mediumconst,__Lmediumconst
+   106  000000                     __mediumconst	EQU	__Lmediumconst
+   107                           	GLOBAL	__Ldata
+   108  000000                     __Ldata	EQU	0
+   109  000000                     main@i	equ	??_main+0
+   110+                          	global	main@i
+   111+ 000000                     delay@i	equ	??_delay+0
+   112+                          	global	delay@i
+   113+ 000000                     delay@j	equ	??_delay+2
+   114                           	global	delay@j
+   115                           ;Data sizes: Strings 0, constant 0, data 0, bss 
+                                 0, persistent 0 stack 6
+   116                           	global	_main
+   117                           	global	??_main
+   118                           	global	?_main
+   119                                   psect   text0,class=CODE,space=0,reloc=2
+   120                           
+   121                           	opt lm
+   122                           	file	"C:\Users\rohit\Documents\pic program\pic5
+                                 .c"
+   123                           	line	4
+   124  000000                     	__size_of_main	equ	__end_of_main-_main
+   125                           ;18f4580.h: 24: typedef union {
+   126                           ;18f4580.h: 25: struct {
+   127                           ;18f4580.h: 26: unsigned volatile STKPTR:5;
+   128                           ;18f4580.h: 27: unsigned :1;
+   129                           ;18f4580.h: 28: unsigned volatile STKUNF:1;
+   130                           ;18f4580.h: 29: unsigned volatile STKFUL:1;
+   131                           ;18f4580.h: 30: };
+   132                           ;18f4580.h: 31: } __STKPTRbits_t;
+   133                           ;18f4580.h: 32: extern volatile __STKPTRbits_t S
+                                 TKPTRbits @ 0xFFC;
+   134                           ;18f4580.h: 33: typedef union {
+   135                           ;18f4580.h: 34: struct {
+   136                           ;18f4580.h: 35: unsigned volatile RBIF:1;
+   137                           ;18f4580.h: 36: unsigned volatile INT0IF:1;
+   138                           ;18f4580.h: 37: unsigned volatile TMR0IF:1;
+   139                           	
+   140  007F08                     _main:		; BSR set to: ?
+   141                           
+   142                           	opt stack 31
+   143                           	line	5
+   144                           ;pic5.c: 5: TRISD=0x00;
+   145  007F08  0E00               	movlw	low(0)
+   146  007F0A  6E95               	movwf	((c:3989)),c	;volatile
+   147                           	line	6
+   148                           ;pic5.c: 6: while(1)
+   149                           	
+   150  007F0C                     l676:		; BSR set to: ?
+   151                           
+   152                           	line	9
+   153                           ;pic5.c: 7: {
+   154                           ;pic5.c: 8: int i;
+   155                           ;pic5.c: 9: LATD=0x01;
+   156  007F0C  0E01               	movlw	low(01h)
+   157  007F0E  6E8C               	movwf	((c:3980)),c	;volatile
+   158                           	line	10
+   159                           ;pic5.c: 10: delay();
+   160  007F10  ECB7  F03F         	call	_delay	;wreg free
+   161                           	line	11
+   162                           ;pic5.c: 11: for(i=8;i>0;i--)
+   163  007F14  0E08               	movlw	low(08h)
+   164  007F16  0100               	movlb	0	; () banked
+   165  007F18  0100               	movlb	0	; () banked
+   166  007F1A  6FFA               	movwf	((main@i))&0ffh
+   167  007F1C  0E00               	movlw	high(08h)
+   168  007F1E  0100               	movlb	0	; () banked
+   169  007F20  6FFB               	movwf	((main@i+1))&0ffh
+   170  007F22  0100               	movlb	0	; () banked
+   171  007F24  0100               	movlb	0	; () banked
+   172  007F26  51FB               	movf	((main@i+1))&0ffh,w
+   173  007F28  0A80               	xorlw	80h
+   174  007F2A  0F80               	addlw	-((0)^80h)
+   175  007F2C  0E01               	movlw	01h
+   176  007F2E  B4D8               	btfsc	status,2
+   177  007F30  5DFA               	subwf	((main@i))&0ffh,w
+   178  007F32  B0D8               	btfsc	status,0
+   179  007F34  D001               	goto	u71
+   180  007F36  D001               	goto	u70
+   181  007F38                     u71:
+   182  007F38  D001               	goto	l678
+   183  007F3A                     u70:
+   184  007F3A  D016               	goto	l675
+   185                           	line	12
+   186                           	
+   187  007F3C                     l678:		; BSR set to: ?
+   188                           
+   189                           	line	13
+   190                           ;pic5.c: 12: {
+   191                           ;pic5.c: 13: LATD=LATD<<1;
+   192  007F3C  508C               	movf	((c:3980)),c,w	;volatile
+   193  007F3E  248C               	addwf	((c:3980)),c,w	;volatile
+   194  007F40  6E8C               	movwf	((c:3980)),c	;volatile
+   195                           	line	14
+   196                           ;pic5.c: 14: delay();
+   197  007F42  ECB7  F03F         	call	_delay	;wreg free
+   198                           	line	11
+   199  007F46  0100               	movlb	0	; () banked
+   200  007F48  0100               	movlb	0	; () banked
+   201  007F4A  07FA               	decf	((main@i))&0ffh
+   202  007F4C  A0D8               	btfss	status,0
+   203  007F4E  07FB               	decf	((main@i+1))&0ffh
+   204  007F50  0100               	movlb	0	; () banked
+   205  007F52  0100               	movlb	0	; () banked
+   206  007F54  51FB               	movf	((main@i+1))&0ffh,w
+   207  007F56  0A80               	xorlw	80h
+   208  007F58  0F80               	addlw	-((0)^80h)
+   209  007F5A  0E01               	movlw	01h
+   210  007F5C  B4D8               	btfsc	status,2
+   211  007F5E  5DFA               	subwf	((main@i))&0ffh,w
+   212  007F60  B0D8               	btfsc	status,0
+   213  007F62  D001               	goto	u81
+   214  007F64  D001               	goto	u80
+   215  007F66                     u81:
+   216  007F66  D7EA               	goto	l678
+   217  007F68                     u80:
+   218                           	
+   219  007F68                     l679:		; BSR set to: ?
+   220                           
+   221                           	line	16
+   222                           	
+   223  007F68                     l675:		; BSR set to: ?
+   224                           
+   225                           	line	6
+   226  007F68  D7D1               	goto	l676
+   227                           	global	start
+   228  007F6A  EF00  F000         	goto	start
+   229                           	opt stack 0
+   230                           GLOBAL __end_of_main
+   231  007F6E                     	__end_of_main:
+   232                           	FNSIZE	_main,2,0
+   233                           ; =============== function _main ends ==========
+                                 ==
+   234                           
+   235                                   psect   text1,class=CODE,space=0,reloc=2
+   236                           	line	17
+   237                           
+   238                           	opt lm
+   239                           	signat	_main,88
+   240                           	global	_delay
+   241                           	global	??_delay
+   242                           	global	?_delay
+   243                           	file	"C:\Users\rohit\Documents\pic program\pic5
+                                 .c"
+   244                           	line	19
+   245  000000                     	__size_of_delay	equ	__end_of_delay-_delay
+   246                           ;pic5.c: 18: void delay()
+   247                           ;pic5.c: 19: {
+   248                           	
+   249  007F6E                     _delay:		; BSR set to: ?
+   250                           
+   251                           	opt stack 30
+   252                           	line	21
+   253  007F6E  0E00               	movlw	low(0)
+   254  007F70  0100               	movlb	0	; () banked
+   255  007F72  0100               	movlb	0	; () banked
+   256  007F74  6FFC               	movwf	((delay@i))&0ffh
+   257  007F76  0E00               	movlw	high(0)
+   258  007F78  0100               	movlb	0	; () banked
+   259  007F7A  6FFD               	movwf	((delay@i+1))&0ffh
+   260  007F7C  0100               	movlb	0	; () banked
+   261  007F7E  0100               	movlb	0	; () banked
+   262  007F80  51FD               	movf	((delay@i+1))&0ffh,w
+   263  007F82  0A80               	xorlw	80h
+   264  007F84  0F7F               	addlw	-((01h)^80h)
+   265  007F86  0EF4               	movlw	0F4h
+   266  007F88  B4D8               	btfsc	status,2
+   267  007F8A  5DFC               	subwf	((delay@i))&0ffh,w
+   268  007F8C  A0D8               	btfss	status,0
+   269  007F8E  D001               	goto	u91
+   270  007F90  D001               	goto	u90
+   271  007F92                     u91:
+   272  007F92  D001               	goto	l682
+   273  007F94                     u90:
+   274  007F94  D010               	goto	l683
+   275                           	
+   276  007F96                     l682:		; BSR set to: ?
+   277                           
+   278  007F96  0100               	movlb	0	; () banked
+   279  007F98  0100               	movlb	0	; () banked
+   280  007F9A  4BFC               	infsnz	((delay@i))&0ffh
+   281  007F9C  2BFD               	incf	((delay@i+1))&0ffh
+   282  007F9E  0100               	movlb	0	; () banked
+   283  007FA0  0100               	movlb	0	; () banked
+   284  007FA2  51FD               	movf	((delay@i+1))&0ffh,w
+   285  007FA4  0A80               	xorlw	80h
+   286  007FA6  0F7F               	addlw	-((01h)^80h)
+   287  007FA8  0EF4               	movlw	0F4h
+   288  007FAA  B4D8               	btfsc	status,2
+   289  007FAC  5DFC               	subwf	((delay@i))&0ffh,w
+   290  007FAE  A0D8               	btfss	status,0
+   291  007FB0  D001               	goto	u101
+   292  007FB2  D001               	goto	u100
+   293  007FB4                     u101:
+   294  007FB4  D7F0               	goto	l682
+   295  007FB6                     u100:
+   296                           	
+   297  007FB6                     l683:		; BSR set to: ?
+   298                           
+   299                           	line	22
+   300                           ;pic5.c: 22: for(j=0;j<500;j++);
+   301  007FB6  0E00               	movlw	low(0)
+   302  007FB8  0100               	movlb	0	; () banked
+   303  007FBA  0100               	movlb	0	; () banked
+   304  007FBC  6FFE               	movwf	((delay@j))&0ffh
+   305  007FBE  0E00               	movlw	high(0)
+   306  007FC0  0100               	movlb	0	; () banked
+   307  007FC2  6FFF               	movwf	((delay@j+1))&0ffh
+   308  007FC4  0100               	movlb	0	; () banked
+   309  007FC6  0100               	movlb	0	; () banked
+   310  007FC8  51FF               	movf	((delay@j+1))&0ffh,w
+   311  007FCA  0A80               	xorlw	80h
+   312  007FCC  0F7F               	addlw	-((01h)^80h)
+   313  007FCE  0EF4               	movlw	0F4h
+   314  007FD0  B4D8               	btfsc	status,2
+   315  007FD2  5DFE               	subwf	((delay@j))&0ffh,w
+   316  007FD4  A0D8               	btfss	status,0
+   317  007FD6  D001               	goto	u111
+   318  007FD8  D001               	goto	u110
+   319  007FDA                     u111:
+   320  007FDA  D001               	goto	l685
+   321  007FDC                     u110:
+   322  007FDC  D010               	goto	l686
+   323                           	
+   324  007FDE                     l685:		; BSR set to: ?
+   325                           
+   326  007FDE  0100               	movlb	0	; () banked
+   327  007FE0  0100               	movlb	0	; () banked
+   328  007FE2  4BFE               	infsnz	((delay@j))&0ffh
+   329  007FE4  2BFF               	incf	((delay@j+1))&0ffh
+   330  007FE6  0100               	movlb	0	; () banked
+   331  007FE8  0100               	movlb	0	; () banked
+   332  007FEA  51FF               	movf	((delay@j+1))&0ffh,w
+   333  007FEC  0A80               	xorlw	80h
+   334  007FEE  0F7F               	addlw	-((01h)^80h)
+   335  007FF0  0EF4               	movlw	0F4h
+   336  007FF2  B4D8               	btfsc	status,2
+   337  007FF4  5DFE               	subwf	((delay@j))&0ffh,w
+   338  007FF6  A0D8               	btfss	status,0
+   339  007FF8  D001               	goto	u121
+   340  007FFA  D001               	goto	u120
+   341  007FFC                     u121:
+   342  007FFC  D7F0               	goto	l685
+   343  007FFE                     u120:
+   344                           	
+   345  007FFE                     l686:		; BSR set to: ?
+   346                           
+   347                           	line	23
+   348                           ;pic5.c: 23: }
+   349  007FFE                     l681:
+   350                           			; BSR set to: ?
+   351                           
+   352  007FFE  0012               	return
+   353                           	opt stack 0
+   354                           GLOBAL __end_of_delay
+   355  008000                     	__end_of_delay:
+   356                           	FNSIZE	_delay,4,0
+   357                           ; =============== function _delay ends =========
+                                 ===
+   358                           
+   359                           	signat	_delay,88
+   360                           	FNCALL	_main,_delay
+   361                           	FNROOT	_main
+   362                                   psect   const,class=CODE,space=0,reloc=2
+   363                           	global	_LATD
+   364  000000                     _LATD	equ	0xF8C
+   365                           	global	_TRISD
+   366  000000                     _TRISD	equ	0xF95
+   367                           	psect	intsave_regs,class=BIGRAM,space=1
+   368                           	PSECT	param0,class=BANK0,space=1
+   369                           	GLOBAL	__Lparam0
+   370                           	FNCONF	param0,??,?
+   371                           GLOBAL	__Lparam, __Hparam
+   372                           GLOBAL	__Lparam0, __Hparam0
+   373  000000                     __Lparam	EQU	__Lparam0
+   374  000000                     __Hparam	EQU	__Hparam0
+
+
+HI-TECH Software PICC-18 Macro Assembler V9.63PL3 build 4692 
+Symbol Table                                           Wed Oct 14 16:56:13 2020
+
+            u70 7F3A              u71 7F38              u80 7F68  
+            u81 7F66              u90 7F94              u91 7F92  
+           l681 7FFE             l682 7F96             l683 7FB6  
+           l675 7F68             l676 7F0C             l685 7FDE  
+           l686 7FFE             l678 7F3C             l679 7F68  
+           u100 7FB6             u101 7FB4             u110 7FDC  
+           u111 7FDA             u120 7FFE             u121 7FFC  
+          _LATD 000F8C            _main 7F08            start 0000  
+         ?_main 00FA           _TRISD 000F95           _delay 7F6E  
+         main@i 00FA           status 000FD8    __end_of_main 7F6E  
+        ??_main 00FA   __activetblptr 000000          ?_delay 00FC  
+        __Ldata 000000          delay@i 00FC          delay@j 00FE  
+  __mediumconst 0600      __accesstop 0060   __end_of_delay 8000  
+       ??_delay 00FC         __Hparam 0100         __Lparam 00FA  
+       __ramtop 0600   __Lmediumconst 0600     __smallconst 0600  
+      __Hparam0 0100        __Lparam0 00FA    __Lsmallconst 0600  
